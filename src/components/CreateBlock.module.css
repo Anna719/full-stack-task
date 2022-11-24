@@ -1,0 +1,23 @@
+.form {
+  display: flex;
+  align-items: center;
+  gap: var(--SPACING-1);
+}
+
+.input {
+  border: 1px solid var(--BLUE-5);
+  border-radius: var(--RADIUS-1);
+  padding: var(--SPACING-1);
+}
+
+.button {
+  background-color: var(--BLUE-5);
+  color: white;
+  border: none;
+  border-radius: var(--RADIUS-1);
+  padding: var(--SPACING-1) var(--SPACING-2);
+}
+
+.button:disabled {
+  background-color: var(--BLUE-3);
+}

@@ -1,0 +1,12 @@
+# default
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+
+# generated
+package-lock.json
+env/**
+
+# builds
+.next

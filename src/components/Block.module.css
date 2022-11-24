@@ -1,0 +1,23 @@
+.block {
+  position: relative;
+  padding: var(--SPACING-1);
+  padding-inline-end: var(--SPACING-4);
+  border: 1px solid var(--BLUE-2);
+  border-radius: var(--RADIUS-2);
+}
+
+.delete {
+  position: absolute;
+  top: var(--SPACING-1);
+  right: var(--SPACING-1);
+  width: var(--SPACING-2);
+  height: var(--SPACING-2);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--BLUE-3);
+  color: white;
+  border: none;
+  border-radius: var(--RADIUS-1);
+}

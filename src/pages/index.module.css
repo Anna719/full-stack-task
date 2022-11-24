@@ -1,0 +1,9 @@
+.main {
+  display: flow-root;
+  min-height: 100vh;
+  padding: var(--SPACING-3);
+}
+
+.main > * + * {
+  margin-top: var(--SPACING-3);
+}

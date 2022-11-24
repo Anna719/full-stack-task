@@ -1,0 +1,59 @@
+:root {
+  --SPACING-1: 8px;
+  --SPACING-2: 16px;
+  --SPACING-3: 24px;
+  --SPACING-4: 32px;
+  --SPACING-5: 40px;
+
+  --RADIUS-1: 4px;
+  --RADIUS-2: 8px;
+  --RADIUS-3: 12px;
+  --RADIUS-4: 16px;
+  --RADIUS-5: 20px;
+
+  --BLUE-1: #B7C4CC;
+  --BLUE-2: #8E9FAA;
+  --BLUE-3: #5B7589;
+  --BLUE-4: #30516C;
+  --BLUE-5: #1B3F5F;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: var(--BLUE-5);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+button:active {
+  transform: translateY(1px);
+}
