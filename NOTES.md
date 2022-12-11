@@ -51,8 +51,11 @@ b) Using `splice ()` method that changes the content of an array, adding new ele
 
 Second step is done -> I can drag elements and they will change their positions (after refresh they go back to initial positions) :clap:
 
- 7. I'm still thinking if I should implement dynamic `reorder` during onDragEnd or during onDragUpdate.
- I wanted to at least reassign values of `order` and to see it into console (whether this values change at all). So I created function `resetPositions()`.
- Third step is done -> I can see chaging order in console :clap: collision: .
+7.  I'm still thinking if I should implement dynamic `reorder` during onDragEnd or during onDragUpdate.
+    I wanted to at least reassign values of `order` and to see it into console (whether this values change at all). So I created function `resetPositions()`.
+    Third step is done -> I can see chaging order in console :clap: collision: .
 
- 8. I decided to add basic style change, when component is onDrag.
+8.  I decided to add basic style change, when component is onDrag.
+9.  If `afterId` is `null` that means the block should be after no block, i.e. it is the first block
+    in the ordering, or in other words it is at the end of the list when sorting `desc` by `order`.
+I suppose, in order to achieve this, I need to know the differencen between indexes? It should be "-1", so this way we will know if it's "afterId element".
