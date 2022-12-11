@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import styles from './Blocks.module.css'
 import { trpc } from '../utils/trpc'
-
 import { Block } from './Block'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
 import { type Block as BlockData } from '@prisma/client'
+import { getItemStyle } from '../styles/changeStyle'
 
 export function Blocks() {
   const [notes, setNote] = useState<BlockData[]>([])
@@ -39,7 +39,6 @@ export function Blocks() {
     const resetList = list.map((item, index) => {
       const newItem = item
       newItem.order = index + 1
-
       return item
     })
     return resetList
@@ -98,6 +97,10 @@ export function Blocks() {
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
                         className={styles.block}
+                        style={getItemStyle(
+                          snapshot.isDragging,
+                          provided.draggableProps.style,
+                        )}
                       >
                         <Block block={note} />
                       </div>

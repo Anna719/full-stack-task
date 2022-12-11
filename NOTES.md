@@ -54,4 +54,5 @@ Second step is done -> I can drag elements and they will change their positions 
  7. I'm still thinking if I should implement dynamic `reorder` during onDragEnd or during onDragUpdate.
  I wanted to at least reassign values of `order` and to see it into console (whether this values change at all). So I created function `resetPositions()`.
  Third step is done -> I can see chaging order in console :clap: collision: .
- 
+
+ 8. I decided to add basic style change, when component is onDrag.
