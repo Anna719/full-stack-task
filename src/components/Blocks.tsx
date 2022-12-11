@@ -1,12 +1,29 @@
+import React, { useState, useEffect } from 'react'
 import styles from './Blocks.module.css'
 import { trpc } from '../utils/trpc'
+
 import { Block } from './Block'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'
+import { type Block as BlockData } from '@prisma/client'
 
 export function Blocks() {
+  const [notes, setNote] = useState<BlockData[]>([])
+
   const blocks = trpc.block.list.useQuery({
     sortBy: 'createdAt',
     sortDirection: 'desc',
+  })
+  useEffect(() => {
+    //updating notes state with blocks, each time object is changed
+    if (blocks.data) {
+      setNote(blocks.data)
+      console.log('Was useffect')
+    }
+  }, [blocks.data])
+
+  const utils = trpc.useContext()
+  const updateBlock = trpc.block.reorder.useMutation({
+    onSuccess: () => utils.block.list.invalidate(),
   })
 
   if (blocks.isLoading) {
@@ -15,6 +32,19 @@ export function Blocks() {
 
   if (blocks.error) {
     return <p>{blocks.error.message}</p>
+  }
+
+  const reorder = (
+    list: any[],
+    startIndex: number,
+    endIndex: number,
+  ): any[] => {
+    const result = Array.from(list)
+    //remove and paste element into array
+    const [removed] = result.splice(startIndex, 1)
+    result.splice(endIndex, 0, removed)
+    // list.map((item, index) => ({ ...item, order: index }))
+    return result
   }
 
   const onDragEnd = (result: any) => {
@@ -33,6 +63,8 @@ export function Blocks() {
     ) {
       return
     }
+    //updating state
+    setNote(reorder(notes, source.index, destination.index))
   }
 
   return (
@@ -45,13 +77,9 @@ export function Blocks() {
               {...provided.droppableProps}
               ref={provided.innerRef}
             >
-              {blocks.data.map((block, index) => {
+              {notes.map((note, index) => {
                 return (
-                  <Draggable
-                    key={block.id}
-                    draggableId={block.id}
-                    index={index}
-                  >
+                  <Draggable key={note.id} draggableId={note.id} index={index}>
                     {(provided, snapshot) => (
                       <div
                         ref={provided.innerRef}
@@ -59,7 +87,7 @@ export function Blocks() {
                         {...provided.dragHandleProps}
                         className={styles.block}
                       >
-                        <Block block={block} />
+                        <Block block={note} />
                       </div>
                     )}
                   </Draggable>
