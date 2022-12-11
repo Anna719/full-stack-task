@@ -22,4 +22,21 @@ I decided to have it "autoincrement()" by default, to keep up with the position 
  
  I added `order` option to `src/server/trpc/router/block.ts`  in sortBy and then changed procedure  `trpc.block.list.useQuery`to `sortBy:  'order'`.
 
+ 3. I understood that I need to make an update request in `block.ts`, so I googled how can I do it (with trpc + prisma).
+ a) Firstly, I decided to check whether I got it correctly and created basic update request, where I changed order of 1 element, manually passing the id.
+
+4. The most common library for drag in drop is "react-beautiful-dnd", so I installed it 
+
+`npm i --save-dev @types/react-beautiful-dnd`
+
+5. I read the documentation on how to use it + of course googled it.
+I added the needed components 
+`import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd'`
+ and started to impement it. 
  
+ Unfortunately, it couldn't find this library after installation, so after some stackoverflow posts, I disabled `strict mode`, because "StrictMode rendering breaks ability to find node by it's draggable id ".
+ ` reactStrictMode: false`
+
+ First step is done -> I can drag components now (even though they returned to previous positions) :clap: :sparkles: .
+
+ 6. 
