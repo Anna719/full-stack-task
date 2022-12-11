@@ -34,6 +34,17 @@ export function Blocks() {
     return <p>{blocks.error.message}</p>
   }
 
+  //giving order a new value after dragging
+  const resetPositions = (list: any[]) => {
+    const resetList = list.map((item, index) => {
+      const newItem = item
+      newItem.order = index + 1
+
+      return item
+    })
+    return resetList
+  }
+
   const reorder = (
     list: any[],
     startIndex: number,
@@ -44,7 +55,8 @@ export function Blocks() {
     const [removed] = result.splice(startIndex, 1)
     result.splice(endIndex, 0, removed)
     // list.map((item, index) => ({ ...item, order: index }))
-    return result
+    console.log(resetPositions(result), 'RESET')
+    return resetPositions(result)
   }
 
   const onDragEnd = (result: any) => {

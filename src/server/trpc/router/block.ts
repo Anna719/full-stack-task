@@ -34,10 +34,19 @@ export const blockRouter = router({
       z.object({
         id: z.string(),
         afterId: z.string().nullable().optional(),
+        order: z.number().optional(),
       }),
     )
     .mutation(async ({ ctx, input }) => {
       // TODO: implement
+      return await ctx.prisma.block.update({
+        data: {
+          order: input.order,
+        },
+        where: {
+          id: input.id,
+        },
+      })
     }),
   list: publicProcedure
     .input(
